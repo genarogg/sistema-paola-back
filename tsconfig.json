@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "outDir": "./build",
+    "strict": true,
+    "esModuleInterop": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+
+    "baseUrl": "./src",
+    "paths": {
+      "@fn": ["functions/index.ts"],
+      "@email/*": ["email/*"],
+
+      "@controller/*": ["controllers/*"],
+      "@router": ["routers/index.ts"],
+      "@models": ["models/index.ts"],
+      "@db": ["config/db-conenction.ts"]
+    }
+  },
+
+  "include": ["*.ts"],
+  "exclude": ["node_modules"]
+}
