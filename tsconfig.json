@@ -13,13 +13,13 @@
       "@fn": ["functions/index.ts"],
       "@email/*": ["email/*"],
 
-      "@controller/*": ["controllers/*"],
+      "@controller": ["controllers/index.ts"],
       "@router": ["routers/index.ts"],
       "@models": ["models/index.ts"],
       "@db": ["config/db-conenction.ts"]
     }
   },
 
-  "include": ["*.ts", "**/**/*.ts"],
+  "include": ["*.ts", "**/**/*.ts", "**/**/**/*.ts"],
   "exclude": ["node_modules"]
 }
