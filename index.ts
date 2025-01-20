@@ -15,7 +15,7 @@ const CORS_URL = process.env.CORS_URL || "*";
 const app = express();
 
 // Usa cors como middleware
-app.use(cors({ origin: CORS_URL }));
+app.use(cors({ origin: "*" }));
 
 // Configurar el directorio public
 app.use(express.static(path.join(__dirname, "src/public")));

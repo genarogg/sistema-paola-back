@@ -2,18 +2,23 @@ import { Sequelize, DataTypes, Model } from "sequelize";
 import sequelize from "@db";
 
 class User extends Model {
-    public id!: number;
-    public email!: string;
-    public password!: string;
-    public role!: "admin" | "user";
+    declare id: number;
+    declare nombreyapellido: string;
+    declare email: string;
+    declare password: string;
+    declare role: string;
 }
 
 User.init(
     {
         id: {
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
+        },
+        nombreyapellido: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         email: {
             type: DataTypes.STRING,
@@ -30,7 +35,7 @@ User.init(
         },
     },
     {
-        tableName: "auth_users",
+        tableName: "users",
         sequelize: sequelize,
     }
 );
