@@ -8,6 +8,11 @@ import getDepartamentos from "./departamento/reader";
 import deleteDepartamento from "./departamento/delete";
 import updateDepartamento from "./departamento/update";
 
+import createBienes from "./bienes/create";
+import getBieness from "./bienes/reader";
+import deleteBienes from "./bienes/delete";
+import updateBienes from "./bienes/update";
+
 
 
 export {
@@ -18,5 +23,10 @@ export {
     createDepartamento,
     getDepartamentos,
     deleteDepartamento,
-    updateDepartamento
+    updateDepartamento,
+
+    createBienes,
+    getBieness,
+    deleteBienes,
+    updateBienes
 }
