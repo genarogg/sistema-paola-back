@@ -3,8 +3,20 @@ import loginPost from "./auth/login";
 import registerPost from "./auth/register";
 import obtenerUsuario from "./auth/obtenerUsuario";
 
+import createDepartamento from "./departamento/create";
+import getDepartamentos from "./departamento/reader";
+import deleteDepartamento from "./departamento/delete";
+import updateDepartamento from "./departamento/update";
+
+
+
 export {
     loginPost,
     registerPost,
-    obtenerUsuario
+    obtenerUsuario,
+
+    createDepartamento,
+    getDepartamentos,
+    deleteDepartamento,
+    updateDepartamento
 }
