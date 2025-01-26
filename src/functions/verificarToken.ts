@@ -12,6 +12,8 @@ const verificarToken = async (req: Request, res: Response, next: NextFunction) =
 
     const token = authHeader.split(" ")[1];
 
+    console.log(token);
+    
     try {
         const payload = jwt.verify(token, JWTSECRETO) as JwtPayload | undefined;
 

@@ -6,10 +6,10 @@ class Bitacora extends Model {
     declare id: number;
     declare usuario: string;
     declare accion: string;
-    declare fecha: string;
+    declare nivel_severidad: string;
+    declare ip: string;
     declare hora: string;
-    declare createdAt: Date;
-    declare updatedAt: Date;
+    declare fecha: string;
 }
 
 Bitacora.init(

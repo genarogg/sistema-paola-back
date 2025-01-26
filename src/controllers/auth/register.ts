@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { User, Bitacora } from "@models";
-import { encriptarContrasena, successResponse, errorResponse } from "@fn";
+import { encriptarContrasena, successResponse, errorResponse, generarToken } from "@fn";
 
 const registerPost = async (req: Request, res: Response) => {
     console.log("req.body", req.body);
@@ -32,8 +32,10 @@ const registerPost = async (req: Request, res: Response) => {
             accion: `Se creó el usuario exitosamente: ${usuario.email}`,
         });
 
+        const token = generarToken({ id: usuario.id });
+
         return res.status(201).json(
-            successResponse({ message: "Usuario creado exitosamente" })
+            successResponse({ message: "Usuario creado exitosamente", token })
         );
 
     } catch (error) {

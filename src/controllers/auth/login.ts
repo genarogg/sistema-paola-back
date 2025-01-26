@@ -11,7 +11,7 @@ const loginPost = async (req: Request, res: Response) => {
             errorResponse({ message: "Faltan campos obligatorios." })
         );
     }
-
+    console.log(email)
     try {
         const usuario = await User.findOne({ where: { email } });
 
@@ -24,8 +24,11 @@ const loginPost = async (req: Request, res: Response) => {
                 errorResponse({ message: "Contraseña incorrecta" })
             );
         }
-
+       
         const token = generarToken({ id: usuario.id });
+
+      console.log(token)
+
 
         // Envía el token en la respuesta
         res.status(200).json(
