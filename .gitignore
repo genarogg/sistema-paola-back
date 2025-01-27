@@ -68,7 +68,4 @@ build/
 # FuseBox cache
 .fusebox/
 
-
-*.sqlite
-
 dist
