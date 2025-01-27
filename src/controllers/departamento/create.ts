@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Departamento } from "@models";
+import { Departamento, Bitacora } from "@models";
 import { successResponse, errorResponse } from "@fn";
 
 const createDepartamento = async (req: Request, res: Response) => {
@@ -8,21 +8,25 @@ const createDepartamento = async (req: Request, res: Response) => {
         return res.status(403).json(errorResponse({ message: "No tienes permisos para crear un departamento" }));
     }
 
-    const { clasificacion, departamento, dependencia, cantidad, costo_total } = req.body;
+    const { clasificacion, departamento, dependencia } = req.body;
 
     // Validar campos obligatorios
-    if (!clasificacion || !departamento || !dependencia || !cantidad || !costo_total) {
+    if (!clasificacion || !departamento || !dependencia) {
         return res.status(400).json(errorResponse({ message: "Faltan campos obligatorios" }));
     }
 
     try {
-        await Departamento.create({
+        const depar = await Departamento.create({
             clasificacion,
             departamento,
             dependencia,
-            cantidad,
-            costo_total,
         });
+
+        await Bitacora.create({
+            usuario: req.body.user.id,
+            accion: `Departamento: ${depar.departamento} creado`,
+        })
+
 
         return res.status(201).json(successResponse({ message: "Departamento creado exitosamente" }));
 

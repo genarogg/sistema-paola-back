@@ -1,4 +1,4 @@
-import {  DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "@db";
 
 class Bienes extends Model {
@@ -28,43 +28,53 @@ Bienes.init(
         },
         grupo: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         subgrupo: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         seccion: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         concepto_movimiento: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         cantidad: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         numero_identificacion: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         nombre: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         marca: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         modelo: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         serial: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
         incorporaciones: {
             type: DataTypes.FLOAT,
@@ -80,7 +90,8 @@ Bienes.init(
         },
         departamento: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
+            defaultValue: 0,
         },
     },
     {

@@ -32,10 +32,12 @@ Departamento.init(
         cantidad: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            defaultValue: 0,
         },
         costo_total: {
             type: DataTypes.FLOAT,
             allowNull: false,
+            defaultValue: 0,
         },
     },
     {

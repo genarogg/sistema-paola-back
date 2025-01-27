@@ -50,6 +50,9 @@ app.use((err: any, req: Request, res: Response, next: Function) => {
   res.status(500).send("¡Algo salió mal!");
 });
 
+import createUsuarioAdmin from "config/userAdmin";
+
 app.listen(PORT, () => {
   log.green(`El servidor esta corriendo http://localhost:${PORT}`);
+  createUsuarioAdmin()
 });

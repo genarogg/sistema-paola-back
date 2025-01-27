@@ -1,22 +1,25 @@
 import { Request, Response } from "express";
-import { Bienes } from "@models";
+import { Bienes, Bitacora, Departamento } from "@models";
 import { successResponse, errorResponse } from "@fn";
+
 
 const createBienes = async (req: Request, res: Response) => {
 
-    const { grupo, subgrupo, seccion, concepto_movimiento, cantidad, numero_identificacion, nombre, marca, modelo, serial, incorporaciones, desincorporaciones, observaciones, departamento } = req.body;
+    console.log(req.body);
+
+    const { grupo, subgrupo, seccion, cantidad, numero_identificacion, nombre, marca, modelo, serial, incorporaciones, observaciones, departamento } = req.body;
 
     // Validar campos obligatorios
-    if (!grupo || !subgrupo || !seccion || !concepto_movimiento || !cantidad || !numero_identificacion || !nombre || !marca || !modelo || !serial || !departamento) {
+    if (!grupo || !subgrupo || !seccion || !cantidad || !numero_identificacion || !nombre || !marca || !modelo || !serial || !departamento || !incorporaciones) {
         return res.status(400).json(errorResponse({ message: "Faltan campos obligatorios" }));
     }
 
     try {
-        await Bienes.create({
+        const bien = await Bienes.create({
             grupo,
             subgrupo,
             seccion,
-            concepto_movimiento,
+
             cantidad,
             numero_identificacion,
             nombre,
@@ -24,10 +27,23 @@ const createBienes = async (req: Request, res: Response) => {
             modelo,
             serial,
             incorporaciones,
-            desincorporaciones,
+
             observaciones,
             departamento,
         });
+
+
+        // buscar el departamento por id
+        const dep = await Departamento.findByPk(departamento);
+        if (dep) {
+            dep.cantidad += cantidad;
+            dep.costo_total += incorporaciones;
+            await dep.save();
+        }
+
+
+
+
 
         return res.status(201).json(successResponse({ message: "Bien creado exitosamente" }));
 
